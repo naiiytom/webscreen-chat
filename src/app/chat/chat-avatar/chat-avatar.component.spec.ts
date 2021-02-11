@@ -8,9 +8,9 @@ describe('ChatWidgetAvatarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatAvatarComponent ]
+      declarations: [ChatAvatarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

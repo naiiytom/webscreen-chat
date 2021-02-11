@@ -53,8 +53,8 @@ export class ChatWidgetComponent implements OnInit {
 
   public operator = {
     name: 'Bot',
-    status: 'busy',
-    avatar: `https://randomuser.me/api/portraits/women/${rand(100)}.jpg`,
+    status: 'Online',
+    avatar: `../../../assets/bot_avatar.png`,
   }
 
   public client = {
@@ -92,7 +92,7 @@ export class ChatWidgetComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => this.visible = true, 1000)
     setTimeout(() => {
-      this.addMessage(this.operator, 'Hi, how can we help you?', 'received')
+      this.addMessage(this.operator, 'สวัสดี ให้เราช่วยอะไรคุณไหม?', 'received')
     }, 1500)
   }
 
@@ -105,7 +105,14 @@ export class ChatWidgetComponent implements OnInit {
       return
     }
     this.addMessage(this.client, message, 'sent')
-    setTimeout(() => this.randomMessage(), 1000)
+    // setTimeout(() => this.randomMessage(), 1000)
+    setTimeout(() => this.getMessageAPI(), 1000)
+    this.scrollToBottom()
+  }
+
+  public getMessageAPI() {
+    const text = 'ว่าอย่างไรหริอ?'
+    this.addMessage(this.operator, text, 'received')
   }
 
   @HostListener('document:keypress', ['$event'])
@@ -113,7 +120,7 @@ export class ChatWidgetComponent implements OnInit {
     if (event.key === '/') {
       this.focusMessage()
     }
-    if (event.key === '?' && !this._visible) {
+    if (event.key === '!' && !this._visible) {
       this.toggleChat()
     }
   }

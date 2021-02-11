@@ -8,9 +8,9 @@ describe('ChatInputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatInputComponent ]
+      declarations: [ChatInputComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

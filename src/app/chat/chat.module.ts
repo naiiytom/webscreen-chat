@@ -11,4 +11,4 @@ import { ChatConfigComponent } from './chat-config/chat-config.component'
   exports: [ChatWidgetComponent, ChatConfigComponent],
   entryComponents: [ChatWidgetComponent, ChatConfigComponent],
 })
-export class ChatModule {}
+export class ChatModule { }
