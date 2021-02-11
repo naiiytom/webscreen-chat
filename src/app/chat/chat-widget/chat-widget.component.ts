@@ -54,7 +54,7 @@ export class ChatWidgetComponent implements OnInit {
   public operator = {
     name: 'Bot',
     status: 'Online',
-    avatar: `../../../assets/bot_avatar.png`,
+    avatar: `https://images.discordapp.net/avatars/692723897887490138/5d4e9766c52fa9142924df3bb9a1d514.png`,
   }
 
   public client = {
@@ -90,7 +90,7 @@ export class ChatWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => this.visible = true, 1000)
+    setTimeout(() => this.visible = false, 1000)
     setTimeout(() => {
       this.addMessage(this.operator, 'สวัสดี ให้เราช่วยอะไรคุณไหม?', 'received')
     }, 1500)
