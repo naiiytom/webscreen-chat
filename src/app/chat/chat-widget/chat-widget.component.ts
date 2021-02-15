@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core'
 import { Subject } from 'rxjs'
 import { fadeIn, fadeInOut } from '../animations'
+import { QueryService } from '../../query'
 
 const randomMessages = [
   'Nice to meet you',
@@ -48,6 +49,7 @@ export class ChatWidgetComponent implements OnInit {
       }, 0)
     }
   }
+  constructor(private queryService: QueryService) { }
 
   public focus = new Subject()
 
@@ -106,12 +108,18 @@ export class ChatWidgetComponent implements OnInit {
     }
     this.addMessage(this.client, message, 'sent')
     // setTimeout(() => this.randomMessage(), 1000)
-    setTimeout(() => this.getMessageAPI(), 1000)
+    setTimeout(() => this.queryService.getRoot().subscribe((data) => {
+      console.log(data)
+      let text = data.text_out
+      this.addMessage(this.operator, text, 'received')
+    }), 1000)
+    // setTimeout(() => this.getMessageAPI(message), 1000)
     this.scrollToBottom()
   }
 
-  public getMessageAPI() {
-    const text = 'ว่าอย่างไรหริอ?'
+  public getMessageAPI(message) {
+    // let text = getMessage(message)
+    let text = message
     this.addMessage(this.operator, text, 'received')
   }
 
@@ -120,7 +128,7 @@ export class ChatWidgetComponent implements OnInit {
     if (event.key === '/') {
       this.focusMessage()
     }
-    if (event.key === '!' && !this._visible) {
+    if (event.key === '?' && !this._visible) {
       this.toggleChat()
     }
   }

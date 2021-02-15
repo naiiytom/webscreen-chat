@@ -1,0 +1,1 @@
+export { QueryService } from './queries.component'

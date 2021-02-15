@@ -4,9 +4,10 @@ import { NgModule } from '@angular/core'
 
 import { ElementModule } from './element.module'
 import { AppComponent } from './app.component'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
-  imports: [BrowserModule, BrowserAnimationsModule, ElementModule],
+  imports: [BrowserModule, BrowserAnimationsModule, ElementModule, HttpClientModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
