@@ -1,1 +1,1 @@
-export { QueryService } from './queries.component'
+export { QueryService } from './query.component'

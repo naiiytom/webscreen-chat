@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http'
     providedIn: 'root'
 })
 export class QueryService {
-    private BASE_URL = 'http://www.randomtext.me/api/'
+    private BASE_URL = 'http://192.168.1.99:3000/'
     constructor(private http: HttpClient) { }
 
     public getRoot() {
@@ -14,5 +14,14 @@ export class QueryService {
 
     public getHealthCheck() {
         return this.http.get<any>(this.BASE_URL + 'heartbeat')
+    }
+
+    public getQueryWithMessage(message: string) {
+        return this.http.get<any>(this.BASE_URL + `query_api/${message}`)
+    }
+
+    public getQuery(message: string) {
+        console.log(message)
+        return this.http.get<any>(this.BASE_URL + 'query_api')
     }
 }
