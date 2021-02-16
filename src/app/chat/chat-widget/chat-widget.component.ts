@@ -32,7 +32,7 @@ const getRandomMessage = () => randomMessages[rand(randomMessages.length)]
 })
 export class ChatWidgetComponent implements OnInit {
   @ViewChild('bottom') bottom: ElementRef
-  @Input() public theme: 'blue' | 'grey' | 'red' = 'blue'
+  @Input() public theme: 'blue' | 'grey' | 'red' = 'red'
 
   public _visible = false
 
@@ -108,10 +108,13 @@ export class ChatWidgetComponent implements OnInit {
     }
     this.addMessage(this.client, message, 'sent')
     // setTimeout(() => this.randomMessage(), 1000)
-    setTimeout(() => this.queryService.getRoot().subscribe((data) => {
+    setTimeout(() => this.queryService.getQuery(message).subscribe((data) => {
       console.log(data)
-      let text = data.text_out
-      this.addMessage(this.operator, text, 'received')
+      let msg = `<i> คะแนน: ${data.score} </i><br />
+                <b> กรณี: ${data.case} </b>
+                ${data.text} <br />`
+      this.addMessage(this.operator, msg, 'received')
+
     }), 1000)
     // setTimeout(() => this.getMessageAPI(message), 1000)
     this.scrollToBottom()
