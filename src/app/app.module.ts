@@ -5,12 +5,11 @@ import { NgModule } from '@angular/core'
 import { ElementModule } from './element.module'
 import { AppComponent } from './app.component'
 import { HttpClientModule } from '@angular/common/http'
-import { SafeHtmlPipe } from './pipes/safeHtml.pipe'
 
 @NgModule({
   imports: [BrowserModule, BrowserAnimationsModule, ElementModule, HttpClientModule],
-  declarations: [AppComponent, SafeHtmlPipe],
-  providers: [SafeHtmlPipe],
+  declarations: [AppComponent],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
