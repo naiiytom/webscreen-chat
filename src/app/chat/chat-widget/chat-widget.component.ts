@@ -72,7 +72,7 @@ export class ChatWidgetComponent implements OnInit {
       from,
       text,
       type,
-      date: new Date().getTime(),
+      date: Date.now(),
     })
     this.scrollToBottom()
   }
